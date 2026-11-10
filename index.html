@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#101a16" />
+  <link rel="icon" href="data:," />
+  <title>HOLLOW SIGNAL — Field Simulation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="game" aria-label="Hollow Signal survival game">
+    <canvas id="view"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">✳</span><div><b>HOLLOW SIGNAL</b><small>FIELD SIMULATION · 07</small></div></div>
+      <div class="clock"><span class="live-dot"></span><span id="clock">05:00</span><small>UNTIL EXTRACTION</small></div>
+      <button id="pause" class="icon-btn" aria-label="Pause">Ⅱ</button>
+    </header>
+    <section class="status-panel">
+      <div class="status-line"><span>VITALS</span><span id="condition">STABLE</span></div>
+      <div class="meter"><i id="health-fill" class="health-fill"></i></div>
+      <div class="status-line hunger-line"><span>HUNGER</span><span id="hunger-label">SATIATED</span></div>
+      <div class="meter thin"><i id="hunger-fill" class="hunger-fill"></i></div>
+      <div class="food-count"><span>RATIONS</span><b id="food-count">0</b></div>
+    </section>
+    <div class="objective"><span class="objective-icon">⌖</span><span id="objective-text">Find food. Stay out of sight.</span></div>
+    <div class="threat" id="threat"><span class="threat-icon">◉</span><div><b>YOU ARE BEING WATCHED</b><small>Movement detected in the treeline</small></div></div>
+    <div class="crosshair"><i></i><i></i><i></i><i></i><b></b></div>
+    <div id="prompt" class="prompt"></div>
+    <div class="hit-flash" id="hit-flash"></div>
+    <div class="controls">
+      <div class="move-pad" id="move-pad" aria-label="Movement joystick"><div class="pad-ring"><div id="stick" class="stick"></div></div><small>MOVE</small></div>
+      <div class="actions">
+        <button id="eat-btn" class="action-btn eat"><span>＋</span><b>EAT</b><small>RATIONS</small></button>
+        <button id="fire-btn" class="action-btn fire"><span>◎</span><b>FIRE</b><small>HUNT</small></button>
+      </div>
+    </div>
+    <div class="desktop-hint">WASD MOVE <span>·</span> DRAG LOOK <span>·</span> CLICK TO HUNT</div>
+    <section id="start-screen" class="screen visible">
+      <div class="modal-card intro-card">
+        <div class="eyebrow"><span></span> NORTH WOOD RESERVE / DAY 03</div>
+        <h1>THE WOODS<br><em>ARE LISTENING.</em></h1>
+        <p>You woke up alone with a field pack and a rifle. Find something to eat. Keep moving. Someone else is out here.</p>
+        <div class="briefing"><div><small>MISSION</small><b>Survive until extraction</b></div><div><small>FIELD NOTE</small><b>Trust the silence least</b></div></div>
+        <button id="start-btn" class="primary-btn">ENTER THE FOREST <span>↗</span></button>
+        <div class="control-note">TOUCH TO MOVE & AIM · HUNT ANIMALS FOR FOOD</div>
+      </div>
+    </section>
+    <section id="pause-screen" class="screen">
+      <div class="modal-card compact-card"><div class="eyebrow">FIELD PAUSED</div><h2>Catch your breath.</h2><p>The forest hasn't.</p><button id="resume-btn" class="primary-btn">BACK TO THE WOODS <span>↗</span></button></div>
+    </section>
+    <section id="end-screen" class="screen">
+      <div class="modal-card reveal-card">
+        <div class="eyebrow" id="ending-kicker"><span></span> SIMULATION COMPLETE</div>
+        <h1 id="ending-title">SIGNAL<br><em>LOST.</em></h1>
+        <p id="ending-copy">The forest falls away. A blank white room. A voice says your name — then says you were reported missing three days ago. The simulation ends. Your disappearance doesn't.</p>
+        <div class="case-file"><span>CASE FILE 07-B</span><b>SUBJECT STATUS: MISSING</b><span>LAST KNOWN LOCATION: NORTH WOOD RESERVE</span></div>
+        <button id="restart-btn" class="primary-btn">RUN SIMULATION AGAIN <span>↻</span></button>
+      </div>
+    </section>
+    <div id="toast" class="toast"></div>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
